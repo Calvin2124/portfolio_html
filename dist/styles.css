@@ -629,6 +629,9 @@ video {
 .max-w-6xl {
   max-width: 72rem;
 }
+.max-w-\[280px\] {
+  max-width: 280px;
+}
 .border-collapse {
   border-collapse: collapse;
 }
@@ -868,6 +871,11 @@ video {
 }
 @media (min-width: 768px) {
 
+  .md\:mx-0 {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
   .md\:mb-0 {
     margin-bottom: 0px;
   }
@@ -878,10 +886,6 @@ video {
 
   .md\:hidden {
     display: none;
-  }
-
-  .md\:w-1\/2 {
-    width: 50%;
   }
 
   .md\:w-1\/3 {
