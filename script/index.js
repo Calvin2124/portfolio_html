@@ -1,33 +1,31 @@
-// Quand le burger menu est cliqué, on affiche le menu mobile si un lien est cliqué le menu se ferme
+// Quand le burger menu est cliqué, on affiche/ferme le menu mobile
 document.getElementById('burger-menu').addEventListener('click', function() {
     let menu = document.getElementById('mobile-menu');
-    if (menu.classList.contains('hidden')) {
-        menu.classList.remove('hidden');
-    } else {
-        menu.classList.add('hidden');
-    }
+    menu.classList.toggle('hidden');  // Utilisation de toggle pour simplifier le code
 });
 
-// Quand le lien du menu mobile est cliqué, on affiche le menu mobile si un lien est cliqué le menu se ferme
-document.getElementById('mobile-menu').addEventListener('click', function() {
-    let menu = document.getElementById('mobile-menu');
-    if (menu.classList.contains('hidden')) {
-        menu.classList.remove('hidden');
-    } else {
-        menu.classList.add('hidden');
-    }
+// Quand un lien du menu mobile est cliqué, on ferme le menu mobile
+const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
+mobileMenuLinks.forEach(link => {
+    link.addEventListener('click', function() {
+        let menu = document.getElementById('mobile-menu');
+        menu.classList.add('hidden');  // On ferme le menu après un clic sur un lien
+    });
 });
 
-// Rendre smooth scroll sur les liens
+// Rendre le scroll des liens smooth
 const links = document.querySelectorAll('a[href^="#"]');
 links.forEach(link => {
     link.addEventListener('click', function(event) {
-        event.preventDefault();
+        event.preventDefault();  // Empêcher le comportement par défaut
         const targetId = this.getAttribute('href').slice(1);
         const targetElement = document.getElementById(targetId);
-        targetElement.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
+        
+        if (targetElement) {  // Vérifier que l'élément cible existe
+            targetElement.scrollIntoView({
+                behavior: 'smooth',  // Défilement fluide
+                block: 'start'
+            });
+        }
     });
 });
